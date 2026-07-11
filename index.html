@@ -1,29 +1,56 @@
-<div id="main-content">
-    <div class="title-wrapper">
-        <img src="TitleScreen.jpg" alt="Plunder, A Pirate's Life" class="w-full">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plunder, A Pirate's Life</title>
+    <style>
+        body { margin: 0; padding: 0; background: #000; overflow: hidden; }
+        
+        #splash-screen {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            display: flex; justify-content: center; align-items: center; z-index: 1000;
+        }
+
+        /* Responsive image container */
+        #splash-screen img {
+            max-width: 100%; max-height: 100vh; object-fit: contain;
+        }
+
+        /* Overlay container for buttons */
+        .button-overlay {
+            position: absolute;
+            bottom: 10%; /* Positions the buttons near the bottom */
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* The Menu-style button design */
+        .menu-btn {
+            background-color: transparent;
+            color: #98FF98;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.75rem;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: 2px solid #98FF98;
+            transition: all 0.2s ease;
+        }
+        .menu-btn:hover {
+            background-color: rgba(152, 255, 152, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <img src="image_ec0c56.jpg" alt="Plunder Splash Screen">
         <div class="button-overlay">
-            <button class="splash-button" onclick="loadApp()">Simple</button>
-            <button class="splash-button">Advanced</button>
+            <button class="menu-btn" onclick="document.getElementById('splash-screen').style.display='none'">Simple</button>
+            <button class="menu-btn" onclick="alert('Advanced coming soon')">Advanced</button>
         </div>
     </div>
-</div>
 
-<script>
-    async function loadApp() {
-        try {
-            const response = await fetch('app.html');
-            const html = await response.text();
-            
-            // This extracts the body content of app.html and replaces the current screen
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            document.getElementById('main-content').innerHTML = doc.body.innerHTML;
-            
-            // Re-run any original scripts if necessary
-            // Note: Since you're loading a whole new body, you may need to 
-            // re-initialize your original JS here if it's not self-executing.
-        } catch (error) {
-            console.error("Error loading app:", error);
-        }
-    }
-</script>
+    </body>
+</html>

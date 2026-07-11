@@ -21,7 +21,7 @@
             box-sizing: border-box; /* Include padding in element's total width and height */
         }
         .container {
-            background-color: #d4b88c; /* Aged parchment/wood color */
+            background-color: rgba(212, 184, 140, 0.1); /* 90% transparent parchment/wood color */
             border-radius: 1.5rem; /* More rounded corners */
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Deeper shadow for depth */
             padding: 1.5rem; /* Adjusted padding for mobile */
@@ -31,7 +31,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem; /* Space between elements */
-            border: 5px solid #8b4513; /* Dark wood border */
+            border: 5px solid #93E9BE; /* Seafoam green border */
             position: relative; /* For potential future decorative elements */
         }
         @media (min-width: 640px) { /* Medium screens and up */
@@ -43,7 +43,7 @@
             content: '';
             position: absolute;
             top: -5px; left: -5px; right: -5px; bottom: -5px;
-            border: 5px dashed rgba(139, 69, 19, 0.5); /* Dashed inner border for map feel */
+            border: 5px dashed rgba(147, 233, 190, 0.5); /* Dashed inner border, updated to seafoam */
             border-radius: 1.5rem;
             pointer-events: none; /* Allow clicks to pass through */
         }
@@ -51,8 +51,8 @@
         h1 {
             font-family: 'Pirata One', cursive; /* Pirate-themed font for the main title */
             font-size: 2.8rem; /* Smaller for mobile */
-            color: #4e342e; /* Dark brown for title */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
+            color: #ffffff; /* Changed to white for better contrast on transparent background */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Stronger shadow for readability */
             margin-bottom: 1.5rem;
             line-height: 1.1; /* Adjust line height for multi-line title */
         }
@@ -63,11 +63,11 @@
         }
 
         .display-section {
-            background-color: #fdf6e3; /* Lighter parchment for display boxes */
+            background-color: rgba(253, 246, 227, 0.2); /* Semi-transparent light parchment */
             border-radius: 0.75rem; /* Rounded corners for display */
             padding: 1.25rem; /* Generous padding */
             font-weight: 700; /* Bold font */
-            color: #333333; /* Dark text color */
+            color: #ffffff; /* White text for better visibility */
             min-height: 4rem; /* Ensure consistent height */
             display: flex;
             justify-content: center;
@@ -75,12 +75,12 @@
             flex-wrap: wrap; /* Allow content to wrap on small screens */
             gap: 1rem; /* Space between items if they wraps */
             flex-direction: column; /* Stack title and content */
-            border: 2px solid #8b4513; /* Matching border */
+            border: 2px solid #93E9BE; /* Seafoam green border */
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
         }
         .display-title {
             font-size: 1.5rem; /* Slightly larger title for sections */
-            color: #5a403a; /* Darker brown */
+            color: #93E9BE; /* Seafoam green */
             margin-bottom: 0.5rem;
             font-family: 'Pirata One', cursive; /* Apply pirate font to section titles too */
         }
@@ -206,8 +206,8 @@
         .selector-group label {
             font-family: 'Pirata One', cursive;
             font-size: 1.4rem;
-            color: #5a403a;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            color: #93E9BE; /* Seafoam green */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             text-align: center; /* Center label text */
         }
         .selector-row {
@@ -230,19 +230,19 @@
             flex: 1; /* Distribute space evenly */
         }
         .selector-group select {
-            background-color: #fdf6e3;
-            border: 2px solid #8b4513;
+            background-color: rgba(253, 246, 227, 0.2);
+            border: 2px solid #93E9BE;
             border-radius: 0.5rem;
             padding: 0.5rem 1rem;
             font-size: 1.1rem;
-            color: #333333;
+            color: #ffffff;
             cursor: pointer;
             outline: none;
             box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
             appearance: none; /* Remove default dropdown arrow */
             -webkit-appearance: none;
             -moz-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b4513'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Custom arrow */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2393E9BE'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Custom arrow */
             background-repeat: no-repeat;
             background-position: right 0.7rem center;
             background-size: 1.5em;
@@ -274,13 +274,13 @@
         .checkbox-item input[type="checkbox"] {
             width: 1.25rem;
             height: 1.25rem;
-            accent-color: #8b4513; /* Pirate-themed accent color */
+            accent-color: #93E9BE; /* Seafoam green accent */
             cursor: pointer;
         }
         .checkbox-item label {
             font-family: "Inter", sans-serif; /* Keep Inter for readability */
             font-size: 1.1rem;
-            color: #5a403a;
+            color: #ffffff;
             user-select: none; /* Prevent text selection */
             cursor: pointer;
         }
@@ -288,12 +288,12 @@
         /* Styles for reintroduced sections (initially hidden) */
         .resource-item { /* Re-added resource item style */
             padding: 0.75rem 1.5rem;
-            background-color: #8b4513;
-            color: #ffd700;
+            background-color: #93E9BE;
+            color: #333333;
             border-radius: 0.75rem;
             white-space: nowrap;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-            border: 2px solid #a0522d;
+            border: 2px solid #55e69e;
         }
         .dice-container { /* Re-added dice container style */
             display: flex;
@@ -310,7 +310,7 @@
         }
         .attack-message { /* Re-added attack message style */
             font-size: 1.5rem;
-            color: #4e342e;
+            color: #ffffff;
             margin-top: 0.5rem;
             font-weight: normal;
         }
@@ -364,23 +364,23 @@
         .battle-bonus-item label {
             font-family: 'Pirata One', cursive;
             font-size: 1.2rem;
-            color: #5a403a;
+            color: #93E9BE; /* Seafoam green */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
         .battle-bonus-item select {
-            background-color: #fdf6e3;
-            border: 2px solid #8b4513;
+            background-color: rgba(253, 246, 227, 0.2);
+            border: 2px solid #93E9BE;
             border-radius: 0.5rem;
             padding: 0.4rem 0.8rem;
             font-size: 1rem;
-            color: #333333;
+            color: #ffffff;
             cursor: pointer;
             outline: none;
             box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238b4513'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2393E9BE'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 0.5rem center;
             background-size: 1.2em;
@@ -700,11 +700,6 @@
                 defenseRoll += defenseBonus;
 
                 // Display dice faces based on original roll (before bonus), but message uses final value
-                // Or, display the final modified value directly if we want to simplify
-                // For now, let's just display the final value for simplicity on the dice emoji.
-                // We'll use the actual roll + bonus for comparison.
-                // To show the *effect* of the bonus, we'll display the final number.
-                // Since emoji only go up to 6, we'll show the number itself if it exceeds 6.
                 attackDieElement.textContent = attackRoll <= 6 ? diceFaces[attackRoll - 1] : attackRoll;
                 defenseDieElement.textContent = defenseRoll <= 6 ? diceFaces[defenseRoll - 1] : defenseRoll;
 

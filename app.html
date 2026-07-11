@@ -10,7 +10,8 @@
         /* Custom font for a clean look, with a pirate-themed header font */
         body {
             font-family: "Inter", sans-serif;
-            background: linear-gradient(to bottom right, #1a2a3a, #0a1a2a); /* Deep ocean gradient */
+            background: #1a2a3a url('BackDrop.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -45,25 +46,6 @@
             border: 5px dashed rgba(139, 69, 19, 0.5); /* Dashed inner border for map feel */
             border-radius: 1.5rem;
             pointer-events: none; /* Allow clicks to pass through */
-        }
-        
-        /* Style for the Return Menu Button */
-        .menu-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #8b4513;
-            color: #ffd700;
-            padding: 0.4rem 0.8rem;
-            border-radius: 0.5rem;
-            font-family: 'Pirata One', cursive;
-            font-size: 0.9rem;
-            text-decoration: none;
-            border: 1px solid #b8860b;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-        .menu-button:hover {
-            background-color: #a0522d;
         }
 
         h1 {
@@ -409,7 +391,6 @@
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="menu-button">Return to Main Menu</a>
         <h1 class="text-center">Plunder, A Pirate's Life</h1>
 
         <div class="checkbox-group">

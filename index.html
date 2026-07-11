@@ -3,54 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plunder, A Pirate's Life</title>
+    <title>Plunder: A Pirate's Life</title>
     <style>
-        body { margin: 0; padding: 0; background: #000; overflow: hidden; }
-        
-        #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            display: flex; justify-content: center; align-items: center; z-index: 1000;
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            background-color: #000;
+            display: flex; justify-content: center; align-items: center;
         }
-
-        /* Responsive image container */
-        #splash-screen img {
-            max-width: 100%; max-height: 100vh; object-fit: contain;
+        #splash-container {
+            position: relative; width: 100%; height: 100%;
+            display: flex; justify-content: center; align-items: center;
         }
-
-        /* Overlay container for buttons */
-        .button-overlay {
-            position: absolute;
-            bottom: 10%; /* Positions the buttons near the bottom */
-            display: flex;
-            gap: 1rem;
+        #splash-container img {
+            max-width: 100%; max-height: 100%; object-fit: contain;
         }
-
-        /* The Menu-style button design */
-        .menu-btn {
+        .button-group {
+            position: absolute; bottom: 10%;
+            display: flex; gap: 1rem;
+        }
+        /* Design matching your Menu button screenshot */
+        .splash-btn {
             background-color: transparent;
             color: #98FF98;
             padding: 0.5rem 1.5rem;
             border-radius: 0.75rem;
             font-family: sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             border: 2px solid #98FF98;
             transition: all 0.2s ease;
         }
-        .menu-btn:hover {
-            background-color: rgba(152, 255, 152, 0.2);
+        .splash-btn:hover {
+            background-color: rgba(152, 255, 152, 0.1);
         }
     </style>
 </head>
 <body>
 
-    <div id="splash-screen">
-        <img src="image_ec0c56.jpg" alt="Plunder Splash Screen">
-        <div class="button-overlay">
-            <button class="menu-btn" onclick="document.getElementById('splash-screen').style.display='none'">Simple</button>
-            <button class="menu-btn" onclick="alert('Advanced coming soon')">Advanced</button>
+    <div id="splash-container">
+        <img src="image_ec0c56.jpg" alt="Splash Screen">
+        <div class="button-group">
+            <button class="splash-btn" onclick="window.location.href='app.html'">Simple</button>
+            <button class="splash-btn" onclick="alert('Advanced Coming Soon')">Advanced</button>
         </div>
     </div>
 
-    </body>
+</body>
 </html>

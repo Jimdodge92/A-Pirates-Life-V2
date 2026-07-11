@@ -8,18 +8,19 @@
         body { margin: 0; padding: 0; background-color: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         
         .wrapper { 
-            position: relative; /* This allows the buttons to sit on top of the image */
+            position: relative; 
             display: inline-block; 
             max-width: 600px;
         }
 
         .splash-image { width: 100%; height: auto; display: block; }
 
+        /* Centering logic: Absolute positioning with transform to hit dead center */
         .button-group { 
             position: absolute; 
-            bottom: 5%; /* Adjust this percentage to move them up/down the image */
+            top: 50%; 
             left: 50%; 
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             display: flex; flex-direction: column; gap: 10px;
         }
 

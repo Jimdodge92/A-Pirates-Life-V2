@@ -5,25 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plunder: A Pirate's Life</title>
     <style>
-        body { 
-            margin: 0; padding: 0; background-color: #000; 
-            display: flex; justify-content: center; align-items: center; 
-            min-height: 100vh; 
-        }
+        body { margin: 0; padding: 0; background-color: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         
         .wrapper { 
-            display: flex; flex-direction: column; align-items: center; 
-            width: 100%; max-width: 600px;
+            position: relative; /* This allows the buttons to sit on top of the image */
+            display: inline-block; 
+            max-width: 600px;
         }
 
         .splash-image { width: 100%; height: auto; display: block; }
 
-        /* Buttons stacked vertically in the center */
         .button-group { 
-            display: flex; flex-direction: column; gap: 10px; margin-top: 20px; 
+            position: absolute; 
+            bottom: 5%; /* Adjust this percentage to move them up/down the image */
+            left: 50%; 
+            transform: translateX(-50%);
+            display: flex; flex-direction: column; gap: 10px;
         }
 
-        /* The design from your original aesthetic */
         .splash-btn {
             background-color: rgba(0, 0, 0, 0.75);
             color: #98FF98;
@@ -36,10 +35,7 @@
             transition: all 0.2s ease;
             min-width: 180px;
         }
-        .splash-btn:hover {
-            background-color: rgba(0, 0, 0, 0.9);
-            border-color: #98FF98;
-        }
+        .splash-btn:hover { background-color: rgba(0, 0, 0, 0.9); border-color: #98FF98; }
     </style>
 </head>
 <body>

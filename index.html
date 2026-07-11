@@ -1,67 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plunder, A Pirate's Life - Title</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #000;
-        }
-        .title-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-        }
-        .button-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-            width: 80%;
-        }
-        /* The exact button design we agreed on */
-        .splash-button {
-            background-color: rgba(0, 0, 0, 0.75); /* 75% opacity */
-            color: #98FF98; /* Seafoam green */
-            padding: 0.5rem 1.5rem;
-            border-radius: 0.75rem;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            cursor: pointer;
-            border: 4px solid #4A6741; /* Thick border */
-            transition: all 0.2s ease;
-            width: auto;
-            min-width: 180px;
-        }
-        .splash-button:hover {
-            background-color: rgba(0, 0, 0, 0.9);
-            border-color: #98FF98;
-        }
-    </style>
-</head>
-<body>
-
+<div id="main-content">
     <div class="title-wrapper">
         <img src="TitleScreen.jpg" alt="Plunder, A Pirate's Life" class="w-full">
-        
         <div class="button-overlay">
-            <button class="splash-button">Simple</button>
+            <button class="splash-button" onclick="loadApp()">Simple</button>
             <button class="splash-button">Advanced</button>
         </div>
     </div>
+</div>
 
-</body>
-</html>
+<script>
+    async function loadApp() {
+        try {
+            const response = await fetch('app.html');
+            const html = await response.text();
+            
+            // This extracts the body content of app.html and replaces the current screen
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            document.getElementById('main-content').innerHTML = doc.body.innerHTML;
+            
+            // Re-run any original scripts if necessary
+            // Note: Since you're loading a whole new body, you may need to 
+            // re-initialize your original JS here if it's not self-executing.
+        } catch (error) {
+            console.error("Error loading app:", error);
+        }
+    }
+</script>

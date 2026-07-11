@@ -5,19 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plunder, A Pirate's Life</title>
     <style>
-        body { 
-            margin: 0; padding: 0; background: #000; 
-            display: flex; justify-content: center; align-items: center; 
-            min-height: 100vh; 
-        }
-        .wrapper { 
-            display: flex; flex-direction: column; align-items: center; gap: 20px; 
-            width: 100%; max-width: 600px; 
-        }
-        .splash-image { width: 100%; height: auto; }
+        body { margin: 0; padding: 0; background: #000; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .wrapper { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; max-width: 600px; }
+        .splash-image { width: 100%; height: auto; display: block; }
         .button-group { display: flex; gap: 1rem; }
-        
-        /* Using the exact design from your screenshot */
         .splash-btn {
             background-color: transparent;
             color: #98FF98;
@@ -27,15 +18,13 @@
             font-size: 1.5rem;
             cursor: pointer;
             border: 2px solid #98FF98;
-            transition: all 0.2s ease;
         }
-        .splash-btn:hover { background-color: rgba(152, 255, 152, 0.1); }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        <img src="image_ec0c56.jpg" alt="Title Screen" class="splash-image">
+        <img src="TitleScreen.jpg" alt="Plunder, A Pirate's Life" class="splash-image">
         
         <div class="button-group">
             <button class="splash-btn" onclick="window.location.href='app.html'">Simple</button>

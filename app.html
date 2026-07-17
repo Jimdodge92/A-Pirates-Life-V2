@@ -15,13 +15,10 @@
         @media (min-width: 640px) { h1 { font-size: 3.5rem; } }
         .display-section { background-color: rgba(253, 246, 227, 0.2); border-radius: 0.75rem; padding: 1.25rem; font-weight: 700; color: #ffffff; min-height: 4rem; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem; flex-direction: column; border: 2px solid #93E9BE; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); }
         .display-title { font-size: 1.5rem; color: #93E9BE; margin-bottom: 0.5rem; font-family: 'Pirata One', cursive; }
-        
-        /* New Compass Styles */
         .compass-wrapper { position: relative; width: 120px; height: 120px; }
-        .compass-base { width: 100%; height: 100%; background-size: contain; background-repeat: no-repeat; }
+        .compass-base { width: 100%; height: 100%; background: url('Compass_A-F.png') no-repeat center center; background-size: contain; }
         .compass-needle { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('Needle - RM.png') no-repeat center center; background-size: contain; transition: transform 2s cubic-bezier(0.2, 0.8, 0.3, 1); }
         .compass-dial { font-size: 3.5rem; color: #ffd700; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
-        
         .button-group { display: flex; flex-direction: column; gap: 1rem; }
         @media (min-width: 640px) { .button-group { flex-direction: row; } }
         .generate-button { flex: 1; background-image: linear-gradient(to right, #4e342e, #6d4c41); color: #ffd700; padding: 1.2rem 2.5rem; border-radius: 1rem; font-size: 1.35rem; font-weight: 600; cursor: pointer; border: 3px solid #b8860b; transition: all 0.3s ease; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
@@ -31,99 +28,96 @@
         .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; }
         .checkbox-item { display: flex; align-items: center; gap: 0.5rem; }
         .checkbox-item input { width: 1.25rem; height: 1.25rem; accent-color: #93E9BE; }
-        .checkbox-item label { color: #ffffff; font-size: 1.1rem; }
+        .checkbox-item label { color: #ffffff; }
         .hidden { display: none; }
-        .resource-item { padding: 0.75rem 1.5rem; background-color: #93E9BE; color: #333333; border-radius: 0.75rem; }
-        .attack-message { font-size: 1.5rem; color: #ffffff; margin-top: 0.5rem; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Plunder, A Pirate's Life</h1>
         <div class="checkbox-group">
-            <div class="checkbox-item"> <input type="checkbox" id="resourceCheckbox"> <label for="resourceCheckbox">Bring back the booty draw!</label> </div>
-            <div class="checkbox-item"> <input type="checkbox" id="battleCheckbox"> <label for="battleCheckbox">Ready for a skirmish!</label> </div>
+            <div class="checkbox-item"><input type="checkbox" id="resourceCheckbox"><label>Bring back the booty draw!</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="battleCheckbox"><label>Ready for a skirmish!</label></div>
         </div>
         <div class="selector-group">
-            <div class="selector-row" style="display: flex; gap: 2rem;">
-                <div class="selector-item"> <label>Alphabet Tiles:</label> <select id="alphabetTilesSelector"></select> </div>
-                <div class="selector-item"> <label>Number Tiles:</label> <select id="numberTilesSelector"></select> </div>
+            <div class="flex gap-4">
+                <div class="text-center"><label>Alphabet:</label><select id="alphabetTilesSelector"></select></div>
+                <div class="text-center"><label>Numbers:</label><select id="numberTilesSelector"></select></div>
             </div>
         </div>
         <div class="display-section">
-            <div class="display-title">Cast your luck to the seas!</div>
-            <div id="textDials" class="flex gap-4">
-                <div id="letterDial" class="compass-dial">A</div>
-                <div id="numberDial" class="compass-dial">1</div>
-            </div>
-            <div id="compassVisual" class="hidden flex gap-4 items-center">
-                <div class="compass-wrapper"><div id="compassBase" class="compass-base"></div><div id="needle" class="compass-needle"></div></div>
-                <div id="numberDialComp" class="compass-dial">1</div>
+            <div class="display-title">Cast your luck!</div>
+            <!-- Dials/Compass Container -->
+            <div id="dialContainer" class="flex gap-4">
+                <div id="textDials" class="flex gap-4">
+                    <div id="letterDial" class="compass-dial">A</div>
+                    <div id="numberDial" class="compass-dial">1</div>
+                </div>
+                <div id="compassVisual" class="hidden compass-wrapper">
+                    <div class="compass-base"></div><div id="needle" class="compass-needle"></div>
+                </div>
             </div>
         </div>
-        <div id="resourceSection" class="display-section hidden"><div class="display-title">Resource Card</div><div id="resourceDisplay">Draw your bounty!</div></div>
+        <div id="resourceSection" class="display-section hidden"><div class="display-title">Resource</div><div id="resourceDisplay">Draw your bounty!</div></div>
         <div id="attackSection" class="display-section hidden"><div class="display-title">Battle Roll</div><div id="attackDisplay">Prepare to board!</div></div>
         <div class="button-group">
             <button id="spinDialButton" class="generate-button">Spin Dial</button>
             <button id="drawResourceButton" class="generate-button hidden">Draw Resource Card</button>
             <button id="attackButton" class="generate-button hidden">Attack!</button>
         </div>
+        <audio id="wilhelmScreamAudio" src="wilhelm_scream.mp3"></audio>
+        <audio id="cannonFireAudio" src="Canon_Fire.mp3"></audio>
     </div>
 
     <script>
-        const alphaSel = document.getElementById('alphabetTilesSelector');
-        const numSel = document.getElementById('numberTilesSelector');
-        const textDials = document.getElementById('textDials');
-        const compassVisual = document.getElementById('compassVisual');
-        const needle = document.getElementById('needle');
-        const compassBase = document.getElementById('compassBase');
-        const letterDial = document.getElementById('letterDial');
-        const numberDial = document.getElementById('numberDial');
-        const numDialComp = document.getElementById('numberDialComp');
-
-        function setup() {
-            for(let i=1; i<=10; i++) alphaSel.innerHTML += `<option value="${i}">${i} Tile${i>1?'s':''}</option>`;
-            for(let i=1; i<=12; i++) numSel.innerHTML += `<option value="${i}">${i} Tile${i>1?'s':''}</option>`;
-        }
+        const alphaSel = document.getElementById('alphabetTilesSelector'), numSel = document.getElementById('numberTilesSelector');
+        const textDials = document.getElementById('textDials'), compassVisual = document.getElementById('compassVisual');
+        const needle = document.getElementById('needle'), letterDial = document.getElementById('letterDial'), numberDial = document.getElementById('numberDial');
+        
+        // --- ORIGINAL FUNCTIONALITY ---
+        for(let i=1; i<=10; i++) alphaSel.innerHTML += `<option value="${i}">${i} Tiles</option>`;
+        for(let i=1; i<=12; i++) numSel.innerHTML += `<option value="${i}">${i} Tiles</option>`;
 
         function updateUI() {
-            if (alphaSel.value === '1') {
-                textDials.classList.add('hidden');
-                compassVisual.classList.remove('hidden');
-                compassBase.style.backgroundImage = "url('Compass_A-F.png')";
-            } else {
-                textDials.classList.remove('hidden');
-                compassVisual.classList.add('hidden');
-            }
+            if (alphaSel.value === '1') { textDials.classList.add('hidden'); compassVisual.classList.remove('hidden'); }
+            else { textDials.classList.remove('hidden'); compassVisual.classList.add('hidden'); }
         }
 
         document.getElementById('spinDialButton').onclick = () => {
             if (alphaSel.value === '1') {
                 const angle = Math.floor(Math.random() * 6) * 60;
                 needle.style.transform = `rotate(${angle + 1080}deg)`;
-                numDialComp.textContent = Math.floor(Math.random() * (numSel.value * 6)) + 1;
             } else {
                 letterDial.textContent = String.fromCharCode(65 + Math.floor(Math.random() * (alphaSel.value * 6)));
-                numberDial.textContent = Math.floor(Math.random() * (numSel.value * 6)) + 1;
             }
+            numberDial.textContent = Math.floor(Math.random() * (numSel.value * 6)) + 1;
         };
 
+        // Re-integrated original event handlers
         document.getElementById('resourceCheckbox').onchange = (e) => {
             document.getElementById('resourceSection').classList.toggle('hidden', !e.target.checked);
             document.getElementById('drawResourceButton').classList.toggle('hidden', !e.target.checked);
         };
-
         document.getElementById('battleCheckbox').onchange = (e) => {
             document.getElementById('attackSection').classList.toggle('hidden', !e.target.checked);
             document.getElementById('attackButton').classList.toggle('hidden', !e.target.checked);
         };
-        
-        // Added placeholders for the original functionality buttons
-        document.getElementById('drawResourceButton').onclick = () => document.getElementById('resourceDisplay').innerHTML = `<span class="resource-item">Gold</span>`;
-        document.getElementById('attackButton').onclick = () => document.getElementById('attackDisplay').innerHTML = `<span class="attack-message">Attacker Wins!</span>`;
+
+        document.getElementById('drawResourceButton').onclick = () => {
+            const res = ['Wood', 'Rum', 'Iron', 'Gold'];
+            document.getElementById('resourceDisplay').innerHTML = `<span class="resource-item">${res[Math.floor(Math.random()*res.length)]}</span>`;
+        };
+
+        document.getElementById('attackButton').onclick = () => {
+            document.getElementById('cannonFireAudio').play();
+            setTimeout(() => {
+                const atk = Math.floor(Math.random()*6)+1, def = Math.floor(Math.random()*6)+1;
+                document.getElementById('attackDisplay').innerHTML = `Rolls: ${atk} vs ${def} <br> ${atk >= def ? 'Attacker Wins!' : 'Defender Wins!'}`;
+                document.getElementById('wilhelmScreamAudio').play();
+            }, 1000);
+        };
 
         alphaSel.onchange = updateUI;
-        setup();
     </script>
 </body>
 </html>

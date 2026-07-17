@@ -12,49 +12,47 @@
         @media (min-width: 640px) { .container { padding: 2.5rem; } }
         .container::before { content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px; border: 5px dashed rgba(147, 233, 190, 0.5); border-radius: 1.5rem; pointer-events: none; }
         h1 { font-family: 'Pirata One', cursive; font-size: 2.8rem; color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); margin-bottom: 1.5rem; line-height: 1.1; }
-        @media (min-width: 640px) { h1 { font-size: 3.5rem; } }
-        .display-section { background-color: rgba(253, 246, 227, 0.2); border-radius: 0.75rem; padding: 1.25rem; font-weight: 700; color: #ffffff; min-height: 4rem; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem; flex-direction: column; border: 2px solid #93E9BE; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); }
+        .display-section { background-color: rgba(253, 246, 227, 0.2); border-radius: 0.75rem; padding: 1.25rem; font-weight: 700; color: #ffffff; display: flex; justify-content: center; align-items: center; flex-direction: column; border: 2px solid #93E9BE; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); }
         .display-title { font-size: 1.5rem; color: #93E9BE; margin-bottom: 0.5rem; font-family: 'Pirata One', cursive; }
-        .compass-wrapper { position: relative; width: 120px; height: 120px; }
-        .compass-base { width: 100%; height: 100%; background: url('Compass_A-F.png') no-repeat center center; background-size: contain; }
-        .compass-needle { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('Needle - RM.png') no-repeat center center; background-size: contain; transition: transform 2s cubic-bezier(0.2, 0.8, 0.3, 1); }
+        
+        /* Compass Styles */
+        .compass-wrapper { position: relative; width: 120px; height: 120px; display: flex; justify-content: center; align-items: center; }
+        .compass-base { width: 120px; height: 120px; background: url('Compass_A-F.png') no-repeat center center; background-size: contain; }
+        .compass-needle { position: absolute; width: 120px; height: 120px; background: url('Needle - RM.png') no-repeat center center; background-size: contain; transition: transform 2s cubic-bezier(0.2, 0.8, 0.3, 1); }
         .compass-dial { font-size: 3.5rem; color: #ffd700; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+        
         .button-group { display: flex; flex-direction: column; gap: 1rem; }
         @media (min-width: 640px) { .button-group { flex-direction: row; } }
-        .generate-button { flex: 1; background-image: linear-gradient(to right, #4e342e, #6d4c41); color: #ffd700; padding: 1.2rem 2.5rem; border-radius: 1rem; font-size: 1.35rem; font-weight: 600; cursor: pointer; border: 3px solid #b8860b; transition: all 0.3s ease; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); }
-        .selector-group { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .selector-group label { font-family: 'Pirata One', cursive; font-size: 1.4rem; color: #93E9BE; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
-        select { background-color: rgba(253, 246, 227, 0.8); border: 2px solid #93E9BE; border-radius: 0.5rem; padding: 0.5rem 1rem; color: #000; width: 100%; max-width: 150px; }
-        .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; }
-        .checkbox-item { display: flex; align-items: center; gap: 0.5rem; }
-        .checkbox-item input { width: 1.25rem; height: 1.25rem; accent-color: #93E9BE; }
-        .checkbox-item label { color: #ffffff; }
-        .hidden { display: none; }
+        .generate-button { flex: 1; background-image: linear-gradient(to right, #4e342e, #6d4c41); color: #ffd700; padding: 1.2rem; border-radius: 1rem; font-size: 1.35rem; cursor: pointer; border: 3px solid #b8860b; }
+        .selector-group { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+        select { background-color: rgba(253, 246, 227, 0.8); border: 2px solid #93E9BE; padding: 0.5rem; color: #000; border-radius: 0.5rem; }
+        .checkbox-group { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; color: white; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Plunder, A Pirate's Life</h1>
         <div class="checkbox-group">
-            <div class="checkbox-item"><input type="checkbox" id="resourceCheckbox"><label>Bring back the booty draw!</label></div>
-            <div class="checkbox-item"><input type="checkbox" id="battleCheckbox"><label>Ready for a skirmish!</label></div>
+            <label><input type="checkbox" id="resourceCheckbox"> Booty Draw</label>
+            <label><input type="checkbox" id="battleCheckbox"> Skirmish</label>
         </div>
         <div class="selector-group">
-            <div class="flex gap-4">
-                <div class="text-center"><label>Alphabet:</label><select id="alphabetTilesSelector"></select></div>
-                <div class="text-center"><label>Numbers:</label><select id="numberTilesSelector"></select></div>
-            </div>
+            <div><label>Alphabet:</label><br><select id="alphabetTilesSelector"></select></div>
+            <div><label>Numbers:</label><br><select id="numberTilesSelector"></select></div>
         </div>
         <div class="display-section">
             <div class="display-title">Cast your luck!</div>
-            <!-- Dials/Compass Container -->
-            <div id="dialContainer" class="flex gap-4">
-                <div id="textDials" class="flex gap-4">
-                    <div id="letterDial" class="compass-dial">A</div>
-                    <div id="numberDial" class="compass-dial">1</div>
-                </div>
-                <div id="compassVisual" class="hidden compass-wrapper">
-                    <div class="compass-base"></div><div id="needle" class="compass-needle"></div>
+            <!-- Standard Text Dials -->
+            <div id="textDials" class="flex gap-4">
+                <div id="letterDial" class="compass-dial">A</div>
+                <div id="numberDial" class="compass-dial">1</div>
+            </div>
+            <!-- Compass Graphic (Hidden by default) -->
+            <div id="compassVisual" class="hidden">
+                <div class="compass-wrapper">
+                    <div class="compass-base"></div>
+                    <div id="needle" class="compass-needle"></div>
                 </div>
             </div>
         </div>
@@ -62,7 +60,7 @@
         <div id="attackSection" class="display-section hidden"><div class="display-title">Battle Roll</div><div id="attackDisplay">Prepare to board!</div></div>
         <div class="button-group">
             <button id="spinDialButton" class="generate-button">Spin Dial</button>
-            <button id="drawResourceButton" class="generate-button hidden">Draw Resource Card</button>
+            <button id="drawResourceButton" class="generate-button hidden">Draw Card</button>
             <button id="attackButton" class="generate-button hidden">Attack!</button>
         </div>
         <audio id="wilhelmScreamAudio" src="wilhelm_scream.mp3"></audio>
@@ -74,13 +72,17 @@
         const textDials = document.getElementById('textDials'), compassVisual = document.getElementById('compassVisual');
         const needle = document.getElementById('needle'), letterDial = document.getElementById('letterDial'), numberDial = document.getElementById('numberDial');
         
-        // --- ORIGINAL FUNCTIONALITY ---
         for(let i=1; i<=10; i++) alphaSel.innerHTML += `<option value="${i}">${i} Tiles</option>`;
         for(let i=1; i<=12; i++) numSel.innerHTML += `<option value="${i}">${i} Tiles</option>`;
 
         function updateUI() {
-            if (alphaSel.value === '1') { textDials.classList.add('hidden'); compassVisual.classList.remove('hidden'); }
-            else { textDials.classList.remove('hidden'); compassVisual.classList.add('hidden'); }
+            if (alphaSel.value === '1') {
+                textDials.classList.add('hidden');
+                compassVisual.classList.remove('hidden');
+            } else {
+                textDials.classList.remove('hidden');
+                compassVisual.classList.add('hidden');
+            }
         }
 
         document.getElementById('spinDialButton').onclick = () => {
@@ -93,7 +95,6 @@
             numberDial.textContent = Math.floor(Math.random() * (numSel.value * 6)) + 1;
         };
 
-        // Re-integrated original event handlers
         document.getElementById('resourceCheckbox').onchange = (e) => {
             document.getElementById('resourceSection').classList.toggle('hidden', !e.target.checked);
             document.getElementById('drawResourceButton').classList.toggle('hidden', !e.target.checked);
